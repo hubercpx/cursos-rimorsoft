@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>VUEjs V2 Component | Rimorsoft Online</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+	<div id="main" class="container">
+		<div class="row">
+			<div class="col-sm-4">
+				<h1>Album</h1>
+				<common-list v-bind:lists="albums"></common-list>
+			</div>
+			<div class="col-sm-4">
+				<h1>Posts</h1>
+				<common-list v-bind:lists="posts"></common-list>
+			</div>
+			<div class="col-sm-4">
+				<h1>Photos</h1>
+				<common-list v-bind:lists="photos"></common-list>
+			</div>
+			<div class="col-sm-12">
+				<h1>JSON</h1>
+				<pre>
+					{{ $data }}
+				</pre>
+			</div>
+		</div>
+	</div>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.0/vue.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.1/axios.min.js"></script>
+	<script type="text/javascript">
+		Vue.component('common-list',{
+			props    : ['lists'],
+			template : `<ul class="list-group">
+					<li v-for="item in lists" class="list-group-item">						
+						{{ item.title }}
+					</li>
+				</ul>`,
+		});
+		
+		var urlPosts  = 'https://jsonplaceholder.typicode.com/posts';
+		var urlAlbums = 'https://jsonplaceholder.typicode.com/albums';
+		new Vue({
+			el: '#main',
+			created: function() {
+				this.getPosts(),
+				this.getAlbums()
+			},
+			data: {
+				posts: [],
+				albums: [],
+				photos: [
+					{title: 'foto 1'},
+					{title: 'foto 2'},
+				]
+			},
+			methods: {
+				getPosts: function() {
+					axios.get(urlPosts).then(response => {
+						this.posts = response.data
+					});
+				},
+				getAlbums: function() {
+					axios.get(urlAlbums).then(response => {
+						this.albums = response.data
+					});
+				}
+			}
+		});
+	</script>
+</body>
+</html>
