@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Http\Requests\ProductRequest;
+
 class ProductController extends Controller
 {
     public function index()
@@ -20,7 +21,17 @@ class ProductController extends Controller
 
     public function store(ProductRequest $request)
     {
-        return 'producto guardado';
+        $product = new Product;
+
+
+        $product->name  = $request->name;
+        $product->short = $request->short;
+        $product->body  = $request->body;
+
+        $product->save();
+
+        return redirect()->route('products.index')
+                         ->with('info', 'El producto fue guardado');
     }
 
     public function edit($id)
@@ -31,7 +42,17 @@ class ProductController extends Controller
 
     public function update(ProductRequest $request, $id)
     {
-        return 'producto actualizado' . $id;
+        $product = Product::find($id);
+
+
+        $product->name  = $request->name;
+        $product->short = $request->short;
+        $product->body  = $request->body;
+
+        $product->save();
+
+        return redirect()->route('products.index')
+                         ->with('info', 'El producto fue actualizado');
     }
 
     public function show($id)

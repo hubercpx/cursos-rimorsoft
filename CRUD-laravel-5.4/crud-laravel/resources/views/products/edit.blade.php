@@ -1,19 +1,21 @@
 @extends('layout')
 
 @section('content')
-    <div class="col-sm-8">
+    <div class="col-xs-12 col-sm-8">
         <h2>
-            Editar Prodcuto
-            <a href="{{ route('products.index', $product->id) }}" class="btn btn-default pull-right">Listado</a>
+            Editar producto
+            <a href="{{ route('products.index') }}" class="btn btn-default pull-right">     Regresar
+            </a>
         </h2>
-
-        @include('products.fragment.error');
-
-        {!! Form::model($product, ['route' => ['products.update', $product->id, 'method' => 'PUT']]) !!}
+        <hr>
+        @include('products.fragment.error')
+        {!! Form::model($product, ['route' => ['products.update', $product->id], 'method' => 'PUT']) !!}
+            
             @include('products.fragment.form')
+            
         {!! Form::close() !!}
     </div>
-    <div class="col-sm-4">
+    <div class="col-xs-12 col-sm-4">
         @include('products.fragment.aside')
     </div>
 @endsection
