@@ -6,7 +6,7 @@
         @forelse ($consolas as $consola)
             <li>{{ $consola }}</li>
         @empty
-            <p>No hay consolas. :()</p>
+            <p>No hay consolas. :(</p>
         @endforelse
     </ul>
 @endsection

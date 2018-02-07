@@ -23,6 +23,16 @@ class PagesController extends Controller
             "Xbox One",
             "Wii U"
         ];
-        return view('contactos', compact('nombre', 'html', 'script', '$consolas'));
+        return view('saludo', compact('nombre', 'html', 'script', '$consolas'));
+    }
+
+    public function contact()
+    {
+        return view('contactos');
+    }
+
+    public function mensajes()
+    {
+        return 'Procesando el mensaje...';
     }
 }

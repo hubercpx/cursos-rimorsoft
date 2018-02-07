@@ -12,20 +12,14 @@
     </head>
     <body>
         <header>
-            <h1>{{ request()->is('/') ? 'Estas en el home' : 'No estas en el home' }}</h1>
-            <ul class="nav">
-              <li class="nav-item {{ request()->is('/') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('home') }}">Inicio</a>
-              </li>
-
-              <li class="nav-item {{ request()->is('saludos/Huber') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('saludos', 'Huber') }}">Saludo</a>
-              </li>
-
-              <li class="nav-item {{ request()->is('contactame') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('contactanos') }}">Contactanos</a>
-              </li>
-            </ul>
+            <?php function activeMenu($url){
+                return request()->is($url) ? 'active' : '';
+            } ?>
+            <nav>
+                <a class="{{ activeMenu('/') }}" href="{{ route('home') }}">Inicio</a>
+                <a class="{{ activeMenu('saludos/*') }}" href="{{ route('saludos', 'Huber') }}">Saludo</a>
+                <a class="{{ activeMenu('contactame') }}" href="{{ route('contactos') }}">Contactos</a>
+            </nav>
         </header>
         @yield('contenido')
         <footer>Copyright {{ date('Y') }}</footer>
