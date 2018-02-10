@@ -18,3 +18,7 @@ Route::get('contactame', ['as' => 'contactos', 'uses' => 'PagesController@contac
 Route::post('contacto', 'PagesController@mensajes');
 
 Route::get('saludos/{nombre?}', ['as' => 'saludos', 'uses' => 'PagesController@saludo'])->where('nombre', "[A-Za-z]");
+
+Route::get('messages/create', 'MessagesController@create')->name('messages.create');
+
+Route::post('messages', 'MessagesController@store')->name('messages.store');

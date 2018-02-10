@@ -1,0 +1,19 @@
+/* Selector de hijos */
+div > p {
+    font-size: 25px;
+}
+
+/* Selector de atributos */
+input[type="text"] {
+    border-rad: 50%;
+}
+
+body {
+    color: blue;
+    font-size: 20px;
+}
+
+article {
+    font-size: 16px;
+    color:black;
+}

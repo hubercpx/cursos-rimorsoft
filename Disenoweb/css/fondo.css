@@ -1,0 +1,27 @@
+/* body {
+    background: #70A4E8;
+    background: url('img/bg-small.jpg');
+    background-repeat:no-repeat;
+    background-repeat:repeat-x;
+    background-repeat:repeat-y;
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+    background: url('img/bg.jpg') no-repeat fixed center center;
+} */
+
+/* .fondo {
+    widows: 600px;
+    height: 600px;
+    backgroun: url('img/bg.jpg') #000;
+    background-repeat: no-repeat;
+    background-size: 50% 100%
+} */
+
+body {
+    background: #637DDA;
+    background: url('img/doodles.png');
+    background-repeat: repeat;
+    background-attachment: scroll;
+}
