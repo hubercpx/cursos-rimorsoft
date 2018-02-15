@@ -5,7 +5,9 @@
             <h1 class="page-header">CRUD Laravel y Vue</h1>
         </div>
         <div class="col-sm-7"><!--id que se va a usar desde vue-->
-            <a href="#" class="btn btn-primary pull-right">Nueva tarea</a>
+            <a href="#" class="btn btn-primary pull-right" data-toggle="modal" data-target="#create"> <!--datatarget create es el identificador del modal-->
+                Nueva tarea
+            </a>
             <table class="table table-hover table-striped">
                 <thead>
                     <tr>
@@ -29,6 +31,7 @@
                     </tr>
                 </tbody>
             </table>
+            @include('create')
         </div>
         <div class="col-sm-5"><!-- En este div se va a colocar la variable $data que es la que siempre hemos usado para ver a detalle los datos de vuejs-->
             <pre>
